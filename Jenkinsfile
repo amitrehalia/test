@@ -53,9 +53,8 @@ pipeline {
                                                         
                                                     agent {
                                                               docker {
-																		FROM amitrehalia/postgres_web
-                                                                        args '-u amitrehalia:Aix910@##'
-																		sh 'echo Building Image....'
+																		FROM tomcat:8.5.35-jre10
+			 
                                                                      }
                                                           }
 
