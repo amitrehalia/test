@@ -6,8 +6,6 @@ pipeline {
                                  stage('Build') {
                                                           steps {
                                                                       sh 'echo Building..'
-								      javac Program.java
-								      java Program
                                                                    }
                                                        }
 
