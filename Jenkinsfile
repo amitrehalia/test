@@ -4,8 +4,7 @@ pipeline {
 	        environment {
                                   EMAIL_RECIPIENTS = 'amit.reh@gmail.com'
                                   CUR_FOLDER_NAME=sh(script : 'printf ${PWD##*/} | sed -e "s/\\(.*\\)/\\L\\1/" | sed "s/_\\(.\\)/\\L\\1/g"', returnStdout: true)
-                                  DOCKER_REGISTRY = "amitrehalia/postgres_web"
-				registry = "amitrehalia/tomcat_ant"
+                                  DOCKER_REGISTRY = "amitrehalia/tomcat_ant"
 			         registryCredential = 'dockerhub'
                                   GIT_AUTH = credentials('amitrehalia')
 
