@@ -5,6 +5,8 @@ pipeline {
                                   EMAIL_RECIPIENTS = 'amit.reh@gmail.com'
                                   CUR_FOLDER_NAME=sh(script : 'printf ${PWD##*/} | sed -e "s/\\(.*\\)/\\L\\1/" | sed "s/_\\(.\\)/\\L\\1/g"', returnStdout: true)
                                   DOCKER_REGISTRY = "amitrehalia/postgres_web"
+				registry = "amitrehalia/tomcat_ant"
+			         registryCredential = 'dockerhub'
                                   GIT_AUTH = credentials('amitrehalia')
 
                           }
@@ -53,8 +55,8 @@ pipeline {
                                                         
                                                     agent {
                                                               docker {
-										FROM tomcat:8.5.35-jre10
-										
+									image "${DOCKER_REGISTRY}"
+                                                                        args '-u amitrehalia:Aix910@##'	
                                                                      }
                                                           }
  							steps {
