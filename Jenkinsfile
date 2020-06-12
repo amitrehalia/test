@@ -13,7 +13,7 @@ pipeline {
                                                                                                                                       echo "Inside Compile  Code Development  "
                                                                                                                                       echo $PWD
                                                                                                                                       ls -lrt
-                                                                                                                                      ant -f build
+                                                                                                                                      ant -f build.xml
                                                                                                                                   '''
                                                                                                                                   
                                                                                                                               }
