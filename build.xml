@@ -2,7 +2,7 @@
 <project name="AAAUserManagement" default="war">
 
 	<path id="compile.classpath">
-		<fileset dir="/home/cdot/aaa/AAAUserManagement/WebContent/WEB-INF/lib">
+		<fileset dir="AAAUserManagement/WebContent/WEB-INF/lib">
 			<include name="*.jar"/>
 		</fileset>
 	</path>
@@ -13,15 +13,15 @@
 	</target>
 	
 	<target name="compile" depends="init" >
-		<javac destdir="build/classes" debug="true" srcdir="/home/cdot/aaa/AAAUserManagement/src">
+		<javac destdir="build/classes" debug="true" srcdir="AAAUserManagement/src">
 			<classpath refid="compile.classpath"/>
 		</javac>
 	</target>
 	
 	<target name="war" depends="compile">
-		<war destfile="dist/AAAUserManagement.war" webxml="/home/cdot/aaa/AAAUserManagement/WebContent/WEB-INF/web.xml">
-			<fileset dir="/home/cdot/aaa/AAAUserManagement/WebContent"/>
-			<lib dir="/home/cdot/aaa/AAAUserManagement/WebContent/WEB-INF/lib"/>
+		<war destfile="dist/AAAUserManagement.war" webxml="AAAUserManagement/WebContent/WEB-INF/web.xml">
+			<fileset dir="AAAUserManagement/WebContent"/>
+			<lib dir="AAAUserManagement/WebContent/WEB-INF/lib"/>
 			<classes dir="build/classes"/>
 		</war>
 	</target>

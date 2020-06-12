@@ -53,10 +53,43 @@ pipeline {
                                                         
                                                     agent {
                                                               docker {
-																		FROM tomcat:8.5.35-jre10
-			 
+										FROM tomcat:8.5.35-jre10
+										
                                                                      }
                                                           }
+ 							steps {
+                                                                 catchError(buildResult: 'SUCCESS', stageResult: 'FAILURE')  {
+                                                                                                                                                                                                                                                           
+
+                                                                                                                                sh '''
+                                                                                                                                      echo "Inside Compile  Code Development  "
+                                                                                                                                      echo $PWD
+                                                                                                                                      ls -lrt
+                                                                                                                                      apt-get update
+                                                                                                                                      apt-get -y install ant
+                                                                                                                                      ./scipt.sh
+                                                                                                                                  '''
+                                                                                                                                  
+                                                                                                                              }
+            
+                                                           }
+       
+                                                      post {
+                                                                success {
+                                                                           echo 'Development Code Compilation Successful'
+                                                                        }
+                                                                        
+                                                                failure {
+                                                                           echo 'Development Code Compilation failed'
+                                                                           script {
+                                                                                     skipRemainingStages = true
+                                                                                     println "skipRemainingStages = ${skipRemainingStages}"
+                                                                                   }
+
+                                                                        }
+                                                           }
+                                                  }
+
 
 
                                  stage('Build') {
